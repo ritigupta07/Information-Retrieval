@@ -1,0 +1,16 @@
+input files for questoin 3 try with doc1, fileinput.txt
+
+Question no.1
+- wikipedia.txt has been converted to tokens.txt manually,  parsewiki.py generates the tokens_frequency
+- plot.py plots the graph
+- compute using python markov.py
+
+
+Question no.3
+Compile with python 2.7.15 
+1. Dictionary has been used to keep "term" ==> "list of pairs (docNo, wordOffset)" 
+2. character offset starts with 0 within each document
+3. documents counted from 1
+4. '\n\n' counts new document
+5. '\n' counts one character
+6. All words converted to lowercase. 'Mike' and 'mike' treated similar.
