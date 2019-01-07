@@ -1,0 +1,14 @@
+This document is assumed to contain only ASCII characters with '\n' used for line endings. For this assignment, the sequence '\n\n' indicates a new "document" within this file. In the above, rank_method is one of cos or proximity. This should determine how the search results you output are ranked and sorted. cos should mean using cosine similarity with TF-IDF column values. For proximity positions are term positions, not character positions as used in the first HW. num_results indicates the top how many of the results satisfying the query should be returned. The query is a quoted string of one of more querty terms. For this homework, two terms are the same if they are the same after stripping punctuation and putting the terms to lower case. An example of running the program might be:
+
+python SearchIndex.py my_corpus.txt cos 5 "The quick brown fox"
+
+The output should be a line with DocId Score on it, followed by a sequence of num_result lines with this information for the top num_results many documents. For example,
+
+DocId Score
+7 .65
+2 .51
+3 .23
+11 .0012
+You should use the ADT from the book for inverted index retrieval and implement your program using calls to the first, last, prev, next methods. The latter two should be implemented using galloping search.
+
+Once you have coded your program, I want you to come up with 10 paragraphs from Wikipedia pages of your choice. These will be your corpus. Make two, at-least-two-term queries, and for each query, determine which documents are relevant. Using your program determine the top 5 documents returned for each of the two scoring functions. Then by hand compute the precision@5 and recall@5 scores. Write up your results and say which scoring system seemed the best.
