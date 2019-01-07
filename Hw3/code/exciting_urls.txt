@@ -1,5 +1,0 @@
-http://www.unc.edu/~twtaylor/teaching/29/web/notepad.html
-http://www.cs.sjsu.edu/faculty/pollett/267.1.18f/
-http://php.net/manual/en/function.usort.php
-http://www.cplusplus.com/
-https://tinyurl.com/create.php?url=http%3A%2F%2Fwww.cplusplus.com%2F
