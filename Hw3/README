@@ -1,0 +1,33 @@
+1. Problems.pdf
+2. Subfolder "code" which has following
+   - stemmer_test.php
+   - stem.php
+   - exciting_urls.txt
+   - composer.json
+   - Empty vendor directory
+3. Hw3.pdf, corpus_stemmed.txt, corpus_unstemmed.txt
+
+This homework consists of three parts: An exercise part, a coding part, and an evaluation part. For the exercise part of the assignment I want you to do the following book problems or variants of book problems: Problem 4.1 but where the posting list for some term consists of 48 million postings each of which consume 6 bytes, Problem 4.3, Problem 4.5 (implement as pseudocode). Put your solutions to these problems in Problems.pdf which should be included in the Hw3.zip file you submit.
+
+For the coding part of the homework, I want you to write a PHP program that makes use of Yioop as a library using Composer. After unzipping your Hw3.zip file and changing directory into the resulting folder, I will at the command line switch into a subfolder code. This should have a file composer.json. So that I can install any dependencies your code has by typing:
+
+composer install
+Before I type this, your submitted project should have an empty vendor subfolder. Your program will then be run by typing a command with the format:
+
+php stemmer_test.php some_file_name should_stem
+For example,
+
+php stemmer_test.php exciting_urls.txt true
+In the above, some_file_name should be the name of a file containing urls, with one url/line. should_stem should have value either true or false. Your program should fetch the page for each url given (we will assume the urls are for HTML pages only), split the document into terms, either stem or not stem these terms and output a sorted list in the same format as homework 1. The docid for this homework is which line the url was in the some_name_file.
+
+To download the urls, I want you to use the method seekquarry\yioop\library\FetchUrl::getPages(). Except for the first argument to this function, you can leave all other arguments at their default value. I want you to get all the urls using just one call to this method. To do the stemming I want you to use Yioop as in the example of using composer from class. In addition, to using Yioop for stemming/chargramming, I want you to use the seekquarry\yioop\library\processors\HtmlProcessor class to do the text extraction from the HTML documents. To do this create an instance of HtmlProcessor with max description set at 20000, the summarizer as CrawlConstants::CENTROID_SUMMARIZER, and everything else at its default value. Then call the process() method with the read in contents of an HTML file and the url that the page came from. This method should, as part of its returned value, provide a locale that can be used with the stemmer. To better understand the returned components of this method, it helps to look at src/library/CrawlConstants.php.
+
+In addition to stemmer_test.php write another short program, stem.php, and include it in the same folder. When run with a command line argument in quotes, it should just output the result of stemming each term in the argument according to the en-US stemmer. For example,
+
+php stem.php "I once knew a jumpy cat"
+would output:
+
+I onc knew a jumpi cat
+For the experiments portion of the homework I want you to find five urls whose pages are about fly fishing and five more urls whose pages are about flying fish. Come up with a list of three topics someone going to a fly fishing site might be interested in. Make queries for these topics. Do the same for flying fish.
+
+Assume each of your queries is a disjunctive query and that we are ranking results using TF-IDF scores and the vector space model. Compute by hand, showing work, the MAP scores for your six topics in the case where the terms in the corpus and query were stemmed and in the case where they were not. What are your conclusions about the effectiveness of stemming? Put all your work for these experiments in the Hw3.pdf file you submit with the homework.
