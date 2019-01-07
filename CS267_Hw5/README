@@ -1,0 +1,15 @@
+For the coding part of the homework, I want you to split indexing query program we have been developing up till HW4 into two parts, an indexing part, IndexProgram (name is allowed to have an extension like .py or .php), and a search program, QueryProgram (name is allowed to have an extension like .py or .php). The first program will be tested from the command line with a syntax like:
+
+aux_program IndexProgram path_to_folder_to_index index_filename
+When run this program should read each .txt file in path_to_folder_to_index in increasing alphabetical order. It should then write to the file index_filename, first the number of .txt files found, on a line by itself, followed for each .txt file on its own line, its number in the alphabetical order colon the name of the file, colon the total number of terms in the file. For example, this portion of index_filename might look like:
+
+3
+0:aardvark.txt:247
+1:sally_loves_bob.txt:1501
+2:zebra.txt:56
+This portion of index_filename can be viewed as a document map. The number before the colon is the doc id of the filename after the colon. So 2 is the doc id of zebra.txt above and it has a total of 56 terms. The rest of index_filename should contain an inverted index of the .txt documents found, making use of these doc ids. For this index, the dictionary should only store case normalized, punctuation stripped versions of terms, and should take a dictionary-as-string approach to its layout. Posting lists should be stored as delta lists of pairs of the form (Rice-code compressed id gap, gamma-coded frequency of that term in the given document).
+
+Your query program will be run from the command line like:
+
+aux_program QueryProgram index_filename query relevance_measure
+Here index_filename is the name of an index file that might have been produced by your IndexProgram, query is some query to run against this index file, and relevance_measure is one of BM25 and your choice of DFR, LMJM, LMD. You should have a readme.txt file which besides listing your team members says which of these three relevance measures you chose. Your program on the above input should use the index and compute a conjunctive query of the terms in query and score the resulting documents using the provided relevance measure. It should then output these in a descending order in a format usable by trec_eval. You should include with your project a test subfolder, which should have plain text documents with names as described above. Using this test set do some experiments to compare the measure you chose against BM25 using trec_eval. Write up your results in Experiments.pdf.
